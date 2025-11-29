@@ -175,8 +175,9 @@ int aloca_matrizes(DiagMat **A, DiagMat **ASP, DiagMat **D, DiagMat **L, DiagMat
         return 1;
     }
 
-    // Alocar matriz L (triangular inferior) como DiagMat com mesma banda de A
-    *L = aloca_matriz_kdiag(n, k);
+    // Alocar matriz L (triangular inferior) como DiagMat com mesma banda de ASP
+    // ASP tem asp_k = 2*k - 1 diagonais, portanto L/U devem usar essa banda
+    *L = aloca_matriz_kdiag(n, asp_k);
     if (!*L) {
         fprintf(stderr, "Erro ao alocar memoria para matriz L (kdiag).\n");
         free_matriz_kdiag(*A);
@@ -185,8 +186,8 @@ int aloca_matrizes(DiagMat **A, DiagMat **ASP, DiagMat **D, DiagMat **L, DiagMat
         return 1;
     }
 
-    // Alocar matriz U (triangular superior) como DiagMat com mesma banda de A
-    *U = aloca_matriz_kdiag(n, k);
+    // Alocar matriz U (triangular superior) como DiagMat com mesma banda de ASP
+    *U = aloca_matriz_kdiag(n, asp_k);
     if (!*U) {
         fprintf(stderr, "Erro ao alocar memoria para matriz U (kdiag).\n");
         free_matriz_kdiag(*A);

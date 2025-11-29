@@ -25,7 +25,7 @@ void genSimetricaPositiva(DiagMat *A, real_t *b, int n, int k, DiagMat *ASP, rea
 // - D é a matriz diagonal composta pelos elementos da diagonal principal de A;
 // - L é a matriz triangular inferior com diagonal principal nula;
 // - U é a matriz triangular superior com diagonal principal nula.
-void geraDLU (DiagMat *A, int n, int k, DiagMat *D, DiagMat *L, DiagMat *U, rtime_t *tempo);
+void geraDLU (DiagMat *A, int n, DiagMat *D, DiagMat *L, DiagMat *U, rtime_t *tempo);
 
 // Gera matriz pré-condicionadora M^-1
 void geraPreCond(DiagMat *D, DiagMat *L, DiagMat *U, real_t w, int n, int k, DiagMat *M, rtime_t *tempo);

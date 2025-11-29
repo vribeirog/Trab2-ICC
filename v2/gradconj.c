@@ -135,7 +135,10 @@ real_t gradientesConjugados(DiagMat *A, real_t *b, real_t *x, int n, real_t tol,
     }
     tempo = timestamp() - tempo;
 
-    *tempo_iter = tempo / iter;
+    if (iter > 0)
+        *tempo_iter = tempo / iter;
+    else
+        *tempo_iter = 0;
 
     free(residuo);
     free(search_direction);
@@ -244,7 +247,10 @@ real_t gradientesConjugadosPrecond(DiagMat *M, DiagMat *A, real_t *b, real_t *x,
 
     tempo = timestamp() - tempo;
     
-    *tempo_iter = tempo / iter;
+    if (iter > 0)
+        *tempo_iter = tempo / iter;
+    else
+        *tempo_iter = 0;
 
     free(residuo);
     free(search_direction);

@@ -76,18 +76,14 @@ void genSimetricaPositiva(DiagMat *A, real_t *b, int n, int k,
 
             real_t sum = 0.0;
             // ASP[i][j] = sum_k A[i][k] * A[j][k]
-            // iterate over diagonals of A: for diagonal index d, offset off = A->offsets[d]
             for (int d = 0; d < A->k; d++) {
                 int off = A->offsets[d];
                 int k_idx = i + off; // k index for A[i][k]
                 if (k_idx < 0 || k_idx >= n) continue;
-                // need the paired diagonal in A whose offset = off - s
                 int off2 = off - s;
                 int d2 = off2 + (A->k / 2);
                 if (d2 < 0 || d2 >= A->k) continue;
-                // A[i][k] is A->diags[d][i]
-                // A[j][k] is A->diags[d2][j]
-                sum += A->diags[d][i] * A->diags[d2][j];
+                    sum += A->diags[d][i] * A->diags[d2][j];
             }
             ASP->diags[d_s][i] = sum;
         }
@@ -112,32 +108,30 @@ void genSimetricaPositiva(DiagMat *A, real_t *b, int n, int k,
 // D: diagonal principal de A
 // L: parte inferior de A (sem diagonal principal)
 // U: parte superior de A (sem diagonal principal)
-void geraDLU (DiagMat *A, int n, int k,
+void geraDLU (DiagMat *A, int n,
           DiagMat *D, DiagMat *L, DiagMat *U, rtime_t *tempo)
 {
     *tempo = timestamp();
 
-    int banda = k / 2; // banda baseada no k original (filtrar apenas essas diagonais)
+    int asp_k = A->k;
+    int asp_banda = asp_k / 2;
 
-    /* Fill D, L, U using DiagMat accessors. D is diagonal-only (k=1), L and U share band k. */
     for (int i = 0; i < n; i++) {
-        int start = i - (k - 1);
+        int start = i - asp_banda;
         if (start < 0) start = 0;
-        int end = i + (k - 1);
+        int end = i + asp_banda;
         if (end > n - 1) end = n - 1;
         for (int j = start; j <= end; j++) {
             real_t val = diagmat_get(A, i, j);
             if (i == j) {
-                /* D diagonal index 0 */
                 D->diags[0][i] = val;
             } else if (i > j) {
-                /* L has same offsets as A; compute diagonal index for (i,j) */
-                int off = j - i; /* negative */
-                int idx = off + (k - 1); /* mapping to 0..k-1 */
+                int off = j - i; 
+                int idx = off + (L->k / 2); 
                 if (idx >= 0 && idx < L->k) L->diags[idx][i] = val;
             } else {
-                int off = j - i; /* positive */
-                int idx = off + (k - 1);
+                int off = j - i; 
+                int idx = off + (U->k / 2);
                 if (idx >= 0 && idx < U->k) U->diags[idx][i] = val;
             }
         }

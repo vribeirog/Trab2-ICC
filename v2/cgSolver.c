@@ -20,16 +20,16 @@ int main() {
     DiagMat *A = NULL; DiagMat *ASP = NULL; real_t *b, *x; DiagMat *D = NULL, *L = NULL, *U = NULL, *M = NULL; real_t *bsp;
     rtime_t tempo_simetrica = 0.0, tempo_dlu = 0.0, tempo_pc_parcial = 0.0, tempo_iter = 0.0, tempo_residuo = 0.0;
 
-    scanf("%d", &n); // Dimensao da matriz (n x n)
-    scanf("%d", &k); // Numero de diagonais da matriz A
+    if (scanf("%d", &n) != 1) { fprintf(stderr, "Erro lendo n.\n"); return 1; }
+    if (scanf("%d", &k) != 1) { fprintf(stderr, "Erro lendo k.\n"); return 1; }
     // k deve ser maior que 1 e impar
     if (k < 1 || k % 2 == 0) {
         fprintf(stderr, "Erro: k deve ser maior que 1 e impar.\n");
         return 1;
     }
-    scanf("%lf", &omega); // Pre-condicionador: omega = -1.0 (sem pre-condicionador) e omega = 0.0 (Jacobi)
-    scanf("%d", &maxit); // Numero maximo de iteracoes a serem executadas
-    scanf("%lf", &epsilon); // Erro aproximado absoluto maximo tolerado
+    if (scanf("%lf", &omega) != 1) { fprintf(stderr, "Erro lendo omega.\n"); return 1; }
+    if (scanf("%d", &maxit) != 1) { fprintf(stderr, "Erro lendo maxit.\n"); return 1; }
+    if (scanf("%lf", &epsilon) != 1) { fprintf(stderr, "Erro lendo epsilon.\n"); return 1; }
 
     // Alocar todos os vetores necessários
     if (aloca_vetores(&b, &bsp, &x, n) != 0) {
@@ -52,7 +52,7 @@ int main() {
 
     // Gerar matrizes D, L e U para o pré-condicionador de Jacobi, se necessário
     if (omega >= 0.0)
-        geraDLU(ASP, n, k, D, L, U, &tempo_dlu); 
+        geraDLU(ASP, n, D, L, U, &tempo_dlu); 
 
     // Gerar matriz M⁻¹ de acordo com o pré-condicionador
     geraPreCond(D, L, U, omega, n, k, M, &tempo_pc_parcial); 
