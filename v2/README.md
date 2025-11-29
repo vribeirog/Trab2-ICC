@@ -37,11 +37,7 @@ Nesta versão (v2) a representação das matrizes de coeficientes foi alterada p
 	- `diagmat_get(DiagMat *A, i, j)` retorna `0` quando `(i,j)` está fora da banda armazenada.
 
 Como compilar e testar (v2)
-```bash
 cd v2
 make
-./cgSolver < entrada.dat |& tee saida_entrada.dat.log
-./cgSolver < entrada2.dat |& tee saida_entrada2.dat.log
-```
-
-Se preferir, posso inserir um pequeno teste automático que compara o resultado do cálculo `ASP` usando a versão densa (construída apenas para teste) com a versão `DiagMat`, para garantir equivalência numérica — digo para implementar se quiser essa validação adicional.
+./cgSolver < entrada.dat 
+./cgSolver < entrada2.dat
