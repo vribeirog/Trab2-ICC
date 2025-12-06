@@ -205,7 +205,6 @@ real_t gradientesConjugadosPrecond(DiagMat *M, DiagMat *A, real_t *b, real_t *x,
     }
 
     real_t rz = dot(residuo, z, n); // rᵗz
-    real_t old_resid_norm = sqrt(rz);
     real_t norma_max = 0.0;
 
     rtime_t tempo = timestamp();
@@ -228,7 +227,6 @@ real_t gradientesConjugadosPrecond(DiagMat *M, DiagMat *A, real_t *b, real_t *x,
             z[i] = M->diags[0][i] * residuo[i];
 
         real_t rz_new = dot(residuo, z, n);
-        real_t new_resid_norm = sqrt(rz_new);
 
         real_t beta = rz_new / rz;
 
@@ -237,7 +235,6 @@ real_t gradientesConjugadosPrecond(DiagMat *M, DiagMat *A, real_t *b, real_t *x,
         }
 
         rz = rz_new;
-        old_resid_norm = new_resid_norm;
         norma_max = norma_maxima(x, x_old, n);
 
         iter++;

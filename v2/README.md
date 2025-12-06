@@ -36,6 +36,22 @@ Nesta versão (v2) a representação das matrizes de coeficientes foi alterada p
 	- As matrizes auxiliares do pré-condicionador (`D`, `L`, `U`, `M`) agora também usam a representação por diagonais (`DiagMat`). Em particular, `D` e `M` usam apenas a diagonal principal (k=1), e `M` armazena os valores da diagonal de `D^{-1}` (Jacobi).
 	- `diagmat_get(DiagMat *A, i, j)` retorna `0` quando `(i,j)` está fora da banda armazenada.
 
+### Desempenho: custo de `calcResiduoSL`
+
+O cálculo do resíduo final (R = b − A x e ||R||₂) é feito pela função `calcResiduoSL` em sislin.c:
+
+- v2 (matriz por diagonais, `DiagMat`):
+	- Produto `Ax` percorre somente as k diagonais armazenadas.
+	- Custo: O(n·k) para `Ax` + O(n) para acumular a norma → O(n·k).
+	- Memória para `A`: O(n·k).
+
+- v1 (matriz densa tradicional):
+	- Produto `Ax` percorre todas as colunas por linha.
+	- Custo: O(n²) para `Ax` + O(n) para a norma → O(n²).
+	- Memória para `A`: O(n²).
+
+Conclusão: Para matrizes banda (k ≪ n), v2 reduz o custo de quadrático para quase linear em n, além de melhorar a localidade de memória.
+
 ## Como compilar e executar (v2)
 
 Compilação:
