@@ -80,10 +80,15 @@ void genSimetricaPositiva(DiagMat *A, real_t *b, int n, int k,
                 int off = A->offsets[d];
                 int k_idx = i + off; // k index for A[i][k]
                 if (k_idx < 0 || k_idx >= n) continue;
+                
+                // Encontrar a diagonal de A com offset (off - s)
                 int off2 = off - s;
-                int d2 = off2 + (A->k / 2);
-                if (d2 < 0 || d2 >= A->k) continue;
-                    sum += A->diags[d][i] * A->diags[d2][j];
+                int d2 = busca_diag(A, off2);
+                if (d2 < 0) continue;  // Diagonal não existe
+                
+                // A[i][k] está em A->diags[d][i]
+                // A[j][k] está em A->diags[d2][j] onde k = i + off = j + off2
+                sum += A->diags[d][i] * A->diags[d2][j];
             }
             ASP->diags[d_s][i] = sum;
         }
@@ -105,34 +110,38 @@ void genSimetricaPositiva(DiagMat *A, real_t *b, int n, int k,
 }
 
 // Preencher D, L, U
-// D: diagonal principal de A
+// D: diagonal principal de A (k=1)
 // L: parte inferior de A (sem diagonal principal)
 // U: parte superior de A (sem diagonal principal)
+// Nota: A pode ser ASP (simétrica positiva) que possui 2*k-1 diagonais
 void geraDLU (DiagMat *A, int n,
           DiagMat *D, DiagMat *L, DiagMat *U, rtime_t *tempo)
 {
     *tempo = timestamp();
 
-    int asp_k = A->k;
-    int asp_banda = asp_k / 2;
-
+    // Iterar sobre todas as diagonais de A (que pode ser ASP)
     for (int i = 0; i < n; i++) {
-        int start = i - asp_banda;
-        if (start < 0) start = 0;
-        int end = i + asp_banda;
-        if (end > n - 1) end = n - 1;
-        for (int j = start; j <= end; j++) {
-            real_t val = diagmat_get(A, i, j);
+        // Para cada diagonal de A
+        for (int d = 0; d < A->k; d++) {
+            int off = A->offsets[d];
+            int j = i + off;
+            
+            // Verificar se posição (i, j) está dentro dos limites
+            if (j < 0 || j >= n) continue;
+            
+            real_t val = A->diags[d][i];
+            
             if (i == j) {
+                // Elemento diagonal
                 D->diags[0][i] = val;
             } else if (i > j) {
-                int off = j - i; 
-                int idx = off + (L->k / 2); 
-                if (idx >= 0 && idx < L->k) L->diags[idx][i] = val;
+                // Elemento triangular inferior
+                int idx = busca_diag(L, off);
+                if (idx >= 0) L->diags[idx][i] = val;
             } else {
-                int off = j - i; 
-                int idx = off + (U->k / 2);
-                if (idx >= 0 && idx < U->k) U->diags[idx][i] = val;
+                // Elemento triangular superior
+                int idx = busca_diag(U, off);
+                if (idx >= 0) U->diags[idx][i] = val;
             }
         }
     }

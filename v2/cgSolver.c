@@ -16,20 +16,14 @@ int main() {
     srandom(20252);
 
     int n, k, maxit;
-    real_t omega, epsilon, norma = 0.0, residuo = 0.0;
+    real_t omega, norma = 0.0, residuo = 0.0;
     DiagMat *A = NULL; DiagMat *ASP = NULL; real_t *b, *x; DiagMat *D = NULL, *L = NULL, *U = NULL, *M = NULL; real_t *bsp;
     rtime_t tempo_simetrica = 0.0, tempo_dlu = 0.0, tempo_pc_parcial = 0.0, tempo_iter = 0.0, tempo_residuo = 0.0;
 
     if (scanf("%d", &n) != 1) { fprintf(stderr, "Erro lendo n.\n"); return 1; }
-    if (scanf("%d", &k) != 1) { fprintf(stderr, "Erro lendo k.\n"); return 1; }
-    // k deve ser maior que 1 e impar
-    if (k < 1 || k % 2 == 0) {
-        fprintf(stderr, "Erro: k deve ser maior que 1 e impar.\n");
-        return 1;
-    }
-    if (scanf("%lf", &omega) != 1) { fprintf(stderr, "Erro lendo omega.\n"); return 1; }
-    if (scanf("%d", &maxit) != 1) { fprintf(stderr, "Erro lendo maxit.\n"); return 1; }
-    if (scanf("%lf", &epsilon) != 1) { fprintf(stderr, "Erro lendo epsilon.\n"); return 1; }
+    k = 7; 
+    omega = 0.0; // Pre-condicionador de Jacobi
+    maxit = 25; 
 
     // Alocar todos os vetores necessários
     if (aloca_vetores(&b, &bsp, &x, n) != 0) {
@@ -59,9 +53,9 @@ int main() {
     
     // Resolver o sistema linear usando gradientes conjugados (com ou sem pré-condicionador)
     if (omega == 0.0)
-        norma = gradientesConjugadosPrecond(M, ASP, bsp, x, n, epsilon, maxit, &tempo_iter);
+        norma = gradientesConjugadosPrecond(M, ASP, bsp, x, n, maxit, &tempo_iter);
     else if (omega == -1.0)
-        norma = gradientesConjugados(ASP, bsp, x, n, epsilon, maxit, &tempo_iter);
+        norma = gradientesConjugados(ASP, bsp, x, n, maxit, &tempo_iter);
     else {
         fprintf(stderr, "Erro: valor de omega inválido. Use -1.0 (sem pré-condicionador) ou 0.0 (Jacobi).\n");
         free_all(&A, &b, &x, &ASP, &bsp, &D, &L, &U, &M);

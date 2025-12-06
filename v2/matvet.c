@@ -119,6 +119,18 @@ void imprime_matriz_kdiag(DiagMat *A) {
     }
 }
 
+// Encontra o índice da diagonal com dado offset
+// Retorna -1 se a diagonal não existe
+int busca_diag(DiagMat *A, int target_offset) {
+    if (!A) return -1;
+    for (int d = 0; d < A->k; d++) {
+        if (A->offsets[d] == target_offset) {
+            return d;
+        }
+    }
+    return -1;  // Diagonal não encontrada
+}
+
 // Aloca todos os vetores necessários para o experimento
 int aloca_vetores(real_t **b, real_t **bsp, real_t **x, int n) {
     // Alocar vetor b

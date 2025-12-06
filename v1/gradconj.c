@@ -50,7 +50,7 @@ void prodMatVet(real_t **A, real_t *x, real_t *y, int n) {
 }
 
 // Método numérico de gradientes conjugados sem pré condicionador
-real_t gradientesConjugados(real_t **A, real_t *b, real_t *x, int n, real_t tol, int maxit, rtime_t* tempo_iter) {
+real_t gradientesConjugados(real_t **A, real_t *b, real_t *x, int n, int maxit, rtime_t* tempo_iter) {
 
     real_t *residuo = malloc(n * sizeof(real_t));
     if (!residuo) {
@@ -95,8 +95,8 @@ real_t gradientesConjugados(real_t **A, real_t *b, real_t *x, int n, real_t tol,
     real_t norma_max = 0.0;
 
     rtime_t tempo = timestamp();
-    // itera enquanto a norma é menor que a tolerancia (epsilon) ou nao ultrapassa o numero iteracoes maxit
-    while ((old_resid_norm > tol) && (iter < maxit)) {
+    // itera enquanto nao ultrapassa o numero iteracoes maxit
+    while (iter < maxit) {
         prodMatVet(A, search_direction, A_search_direction, n);
         real_t denom = dot(search_direction, A_search_direction, n);
         real_t step_size = (old_resid_norm * old_resid_norm) / denom;
@@ -134,7 +134,7 @@ real_t gradientesConjugados(real_t **A, real_t *b, real_t *x, int n, real_t tol,
 }
 
 // Método numérico de gradientes conjugados com pré condicionador
-real_t gradientesConjugadosPrecond(real_t** M, real_t **A, real_t *b, real_t *x, int n, real_t tol, int maxit, rtime_t* tempo_iter) {
+real_t gradientesConjugadosPrecond(real_t** M, real_t **A, real_t *b, real_t *x, int n, int maxit, rtime_t* tempo_iter) {
 
     real_t *residuo = malloc(n * sizeof(real_t));
     if (!residuo) {
@@ -194,7 +194,7 @@ real_t gradientesConjugadosPrecond(real_t** M, real_t **A, real_t *b, real_t *x,
 
     rtime_t tempo = timestamp();
 
-    while ((old_resid_norm > tol) && (iter < maxit)) {
+    while (iter < maxit) {
         prodMatVet(A, search_direction, A_search_direction, n);
         real_t denom = dot(search_direction, A_search_direction, n);
         real_t step_size = rz / denom;
@@ -213,9 +213,6 @@ real_t gradientesConjugadosPrecond(real_t** M, real_t **A, real_t *b, real_t *x,
 
         real_t rz_new = dot(residuo, z, n);
         real_t new_resid_norm = sqrt(rz_new);
-
-        if (new_resid_norm < tol)
-            break;
 
         real_t beta = rz_new / rz;
 

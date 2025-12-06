@@ -38,4 +38,7 @@ void free_matriz_kdiag(DiagMat *A);
 real_t diagmat_get(DiagMat *A, int i, int j);
 void imprime_matriz_kdiag(DiagMat *A);
 
+// Função auxiliar para buscar diagonal pelo offset
+int busca_diag(DiagMat *A, int target_offset);
+
 #endif // __MATVET_H__
