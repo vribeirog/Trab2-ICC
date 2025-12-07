@@ -1,7 +1,10 @@
 CC = gcc
 
-CFLAGS = -g -O3 -march=native -mavx -fopt-info-vec
-LFLAGS = -lm
+# likwid home
+    LIKWID_HOME = /home/soft/likwid
+
+CFLAGS = -g -O3 -march=native -mavx -fopt-info-vec -I${LIKWID_HOME}/include -DLIKWID_PERFMON
+LFLAGS = -lm -L${LIKWID_HOME}/lib -llikwid
 
 PROG = cgSolver
 MODULES = utils cgSolver matvet sislin gradconj $(PROG)

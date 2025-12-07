@@ -12,7 +12,10 @@
 #include "sislin.h"
 #include "gradconj.h"
 
+#include "likwid.h"
+
 int main() {
+    LIKWID_MARKER_INIT;
     srandom(20252);
 
     int n, k, maxit;
@@ -52,23 +55,28 @@ int main() {
     geraPreCond(D, L, U, omega, n, k, M, &tempo_pc_parcial); 
     
     // Resolver o sistema linear usando gradientes conjugados (com ou sem pré-condicionador)
-    if (omega == 0.0)
+    if (omega == 0.0) {
+	LIKWID_MARKER_START("v1-metodo");
         norma = gradientesConjugadosPrecond(M, ASP, bsp, x, n, maxit, &tempo_iter);
-    else if (omega == -1.0)
-        norma = gradientesConjugados(ASP, bsp, x, n, maxit, &tempo_iter);
-    else {
+	LIKWID_MARKER_STOP("v1-metodo");
+    } else if (omega == -1.0) {
+        norma = gradientesConjugados(ASP, bsp, x, n, maxit, &tempo_iter);    
+} else {
         fprintf(stderr, "Erro: valor de omega inválido. Use -1.0 (sem pré-condicionador) ou 0.0 (Jacobi).\n");
         free_all(&A, &b, &x, &ASP, &bsp, &D, &L, &U, &M);
         return 1;
     }
 
+    LIKWID_MARKER_START("v1-residuo");
     residuo = calcResiduoSL(A, b, x, n, k, &tempo_residuo);
+    LIKWID_MARKER_STOP("v1-residuo");
     
     imprimeResultados(n, x, norma, residuo, tempo_simetrica + tempo_dlu + tempo_pc_parcial, tempo_iter, tempo_residuo);
     
 
     // Liberar toda a memoria alocada
     free_all(&A, &b, &x, &ASP, &bsp, &D, &L, &U, &M);
-
+    
+    LIKWID_MARKER_CLOSE;
     return 0;
 }
