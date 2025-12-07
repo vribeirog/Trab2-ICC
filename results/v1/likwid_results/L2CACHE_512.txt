@@ -1,64 +1,64 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v1-metodo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.006670 |
+| RDTSC Runtime [s] | 0.005911 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+----------+
 |         Event         | Counter |  Core 3  |
 +-----------------------+---------+----------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 20877380 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  | 25265540 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  | 22712330 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |  3034230 |
-|     L2_RQSTS_MISS     |   PMC1  |  1171508 |
+|   INSTR_RETIRED_ANY   |  FIXC0  | 20876120 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 20572330 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 19982680 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |  2696156 |
+|     L2_RQSTS_MISS     |   PMC1  |   890946 |
 +-----------------------+---------+----------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0067 |
-| Runtime unhalted [s] |    0.0074 |
-|      Clock [MHz]     | 3791.1283 |
-|          CPI         |    1.2102 |
-|    L2 request rate   |    0.1453 |
-|     L2 miss rate     |    0.0561 |
-|     L2 miss ratio    |    0.3861 |
+|  Runtime (RDTSC) [s] |    0.0059 |
+| Runtime unhalted [s] |    0.0061 |
+|      Clock [MHz]     | 3492.1986 |
+|          CPI         |    0.9854 |
+|    L2 request rate   |    0.1292 |
+|     L2 miss rate     |    0.0427 |
+|     L2 miss ratio    |    0.3305 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v1-residuo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000266 |
+| RDTSC Runtime [s] | 0.000278 |
 |     call count    |        1 |
 +-------------------+----------+
-+-----------------------+---------+---------+
-|         Event         | Counter |  Core 3 |
-+-----------------------+---------+---------+
-|   INSTR_RETIRED_ANY   |  FIXC0  |  798632 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  | 1016970 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  913770 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |  155040 |
-|     L2_RQSTS_MISS     |   PMC1  |   47431 |
-+-----------------------+---------+---------+
++-----------------------+---------+--------+
+|         Event         | Counter | Core 3 |
++-----------------------+---------+--------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 798342 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 980454 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 952408 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  | 135877 |
+|     L2_RQSTS_MISS     |   PMC1  |  39638 |
++-----------------------+---------+--------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
 |  Runtime (RDTSC) [s] |    0.0003 |
 | Runtime unhalted [s] |    0.0003 |
-|      Clock [MHz]     | 3792.9126 |
-|          CPI         |    1.2734 |
-|    L2 request rate   |    0.1941 |
-|     L2 miss rate     |    0.0594 |
-|     L2 miss ratio    |    0.3059 |
+|      Clock [MHz]     | 3491.9931 |
+|          CPI         |    1.2281 |
+|    L2 request rate   |    0.1702 |
+|     L2 miss rate     |    0.0497 |
+|     L2 miss ratio    |    0.2917 |
 +----------------------+-----------+

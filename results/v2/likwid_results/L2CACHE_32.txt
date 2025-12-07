@@ -1,64 +1,64 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v2-metodo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000038 |
+| RDTSC Runtime [s] | 0.000024 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+--------+
 |         Event         | Counter | Core 3 |
 +-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 172507 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  64512 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  | 147254 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   3702 |
-|     L2_RQSTS_MISS     |   PMC1  |   1262 |
+|   INSTR_RETIRED_ANY   |  FIXC0  | 123593 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  65472 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  65518 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   2165 |
+|     L2_RQSTS_MISS     |   PMC1  |    676 |
 +-----------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 3.784841e-05 |
-| Runtime unhalted [s] | 1.892953e-05 |
-|      Clock [MHz]     |    1493.0487 |
-|          CPI         |       0.3740 |
-|    L2 request rate   |       0.0215 |
-|     L2 miss rate     |       0.0073 |
-|     L2 miss ratio    |       0.3409 |
+|  Runtime (RDTSC) [s] | 2.438683e-05 |
+| Runtime unhalted [s] | 1.930121e-05 |
+|      Clock [MHz]     |    3389.7370 |
+|          CPI         |       0.5297 |
+|    L2 request rate   |       0.0175 |
+|     L2 miss rate     |       0.0055 |
+|     L2 miss ratio    |       0.3122 |
 +----------------------+--------------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v2-residuo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000002 |
+| RDTSC Runtime [s] | 0.000001 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+--------+
 |         Event         | Counter | Core 3 |
 +-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  |   7839 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  11465 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  26128 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   1743 |
-|     L2_RQSTS_MISS     |   PMC1  |    484 |
+|   INSTR_RETIRED_ANY   |  FIXC0  |   7016 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |   9817 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |   9758 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   1135 |
+|     L2_RQSTS_MISS     |   PMC1  |    242 |
 +-----------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 2.112666e-06 |
-| Runtime unhalted [s] | 3.364135e-06 |
-|      Clock [MHz]     |    1495.4382 |
-|          CPI         |       1.4626 |
-|    L2 request rate   |       0.2223 |
-|     L2 miss rate     |       0.0617 |
-|     L2 miss ratio    |       0.2777 |
+|  Runtime (RDTSC) [s] | 7.667962e-07 |
+| Runtime unhalted [s] | 2.894062e-06 |
+|      Clock [MHz]     |    3412.6284 |
+|          CPI         |       1.3992 |
+|    L2 request rate   |       0.1618 |
+|     L2 miss rate     |       0.0345 |
+|     L2 miss ratio    |       0.2132 |
 +----------------------+--------------+

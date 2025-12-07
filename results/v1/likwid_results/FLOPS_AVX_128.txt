@@ -1,62 +1,60 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v1-metodo, Group 1: FLOPS_AVX
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000845 |
+| RDTSC Runtime [s] | 0.000311 |
 |     call count    |        1 |
 +-------------------+----------+
-+------------------------------------------+---------+---------+
-|                   Event                  | Counter |  Core 3 |
-+------------------------------------------+---------+---------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 1393595 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 1174489 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 2865702 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_SINGLE |   PMC0  |       0 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC1  |  113792 |
-+------------------------------------------+---------+---------+
++-----------------------+---------+---------+
+|         Event         | Counter |  Core 3 |
++-----------------------+---------+---------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 1392202 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 1089467 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 1058420 |
+|     AVX_INSTS_CALC    |   PMC0  |  225023 |
++-----------------------+---------+---------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0008 |
+|  Runtime (RDTSC) [s] |    0.0003 |
 | Runtime unhalted [s] |    0.0003 |
-|      Clock [MHz]     | 1396.7276 |
-|          CPI         |    0.8428 |
-|   Packed SP MFLOP/s  |         0 |
-|   Packed DP MFLOP/s  |  538.8091 |
+|      Clock [MHz]     | 3491.6212 |
+|          CPI         |    0.7825 |
+|   Packed SP MFLOP/s  | 5795.4393 |
+|   Packed DP MFLOP/s  | 2897.7197 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
-CPU type:	Intel Coffeelake processor
-CPU clock:	3.41 GHz
+CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+CPU type:	Intel Core Haswell processor
+CPU clock:	3.39 GHz
 --------------------------------------------------------------------------------
 Region v1-residuo, Group 1: FLOPS_AVX
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000032 |
+| RDTSC Runtime [s] | 0.000012 |
 |     call count    |        1 |
 +-------------------+----------+
-+------------------------------------------+---------+--------+
-|                   Event                  | Counter | Core 3 |
-+------------------------------------------+---------+--------+
-|             INSTR_RETIRED_ANY            |  FIXC0  |  55084 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  52804 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 128936 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_SINGLE |   PMC0  |      0 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC1  |   4160 |
-+------------------------------------------+---------+--------+
++-----------------------+---------+--------+
+|         Event         | Counter | Core 3 |
++-----------------------+---------+--------+
+|   INSTR_RETIRED_ANY   |  FIXC0  |  55004 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  51298 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  49878 |
+|     AVX_INSTS_CALC    |   PMC0  |   8305 |
++-----------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 3.165775e-05 |
-| Runtime unhalted [s] | 1.549434e-05 |
-|      Clock [MHz]     |    1395.6818 |
-|          CPI         |       0.9586 |
-|   Packed SP MFLOP/s  |            0 |
-|   Packed DP MFLOP/s  |     525.6217 |
+|  Runtime (RDTSC) [s] | 1.220536e-05 |
+| Runtime unhalted [s] | 1.512270e-05 |
+|      Clock [MHz]     |    3488.6908 |
+|          CPI         |       0.9326 |
+|   Packed SP MFLOP/s  |    5443.5101 |
+|   Packed DP MFLOP/s  |    2721.7550 |
 +----------------------+--------------+
