@@ -188,32 +188,20 @@ real_t calcResiduoSL (DiagMat *A, real_t *b, real_t *X, int n, int k, rtime_t *t
 
     real_t residuo_norm = 0.0;
 
-    real_t *Ax = malloc(n * sizeof(real_t));
-    if (!Ax) {
-        fprintf(stderr, "Erro ao alocar vetor Ax na calcResiduoSL.\n");
-        exit(1);
-    }
-
-    // Passo 1: Calcular Ax (usando somente diagonais não-nulas)
-    for(int i = 0; i < n; i++) {
-        Ax[i] = 0.0;
+    // Cálculo direto sem vetor temporário Ax: r_i = b_i - (A*x)_i e acumula ||r||₂²
+    for (int i = 0; i < n; i++) {
+        real_t Ax_i = 0.0;
         for (int d = 0; d < A->k; d++) {
-            int offset = A->offsets[d];
-            int j = i + offset;
-            if (j >= 0 && j < n) {
-                Ax[i] += A->diags[d][i] * X[j];
+            const int offset = A->offsets[d];
+            const int j = i + offset;
+            if ((unsigned)j < (unsigned)n) {
+                Ax_i += A->diags[d][i] * X[j];
             }
         }
-    }
-
-    // Passo 2: Calcular r = b - Ax e ||r||₂
-    for (int i = 0; i < n; i++) {
-        real_t r_i = b[i] - Ax[i];
+        const real_t r_i = b[i] - Ax_i;
         residuo_norm += r_i * r_i;
     }
     residuo_norm = sqrt(residuo_norm);
-
-    free(Ax);
 
     *tempo = timestamp() - *tempo;
 

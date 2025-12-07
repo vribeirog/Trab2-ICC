@@ -18,6 +18,7 @@ real_t dot(real_t *a, real_t *b, int n);
 real_t norma(real_t *a, int n);
 real_t norma_maxima(real_t *X, real_t *X_old, int n);
 void prodMatVet(DiagMat *A, real_t *x, real_t *y, int n);
+void calcResidOtim(DiagMat *A, real_t * restrict x, real_t * restrict b, real_t * restrict residuo, int n);
 
 // Método numérico
 real_t gradientesConjugados(DiagMat *A, real_t *b, real_t *x, int n, int maxit, rtime_t* tempo_iter);

@@ -52,6 +52,25 @@ O cálculo do resíduo final (R = b − A x e ||R||₂) é feito pela função `
 
 Conclusão: Para matrizes banda (k ≪ n), v2 reduz o custo de quadrático para quase linear em n, além de melhorar a localidade de memória.
 
+## Otimizações específicas em v2 (vs v1)
+
+Nesta entrega, além da representação por diagonais, v2 incorpora duas otimizações pontuais solicitadas:
+
+- Op1 — Iteração do Gradiente Conjugado com Jacobi (gradconj.c):
+	- Adicionamos qualificadores `restrict` em ponteiros das rotinas internas críticas (`dot`, `norma` e `prodMatVet`). Isso informa ao compilador que não há aliasing entre os vetores, permitindo gerar código melhor vetorizado (SIMD) com as flags já usadas no Makefile (`-O3 -march=native -mavx`).
+	- Pequenos ajustes de laço (cache de ponteiro da diagonal e offsets) reduzem leituras repetidas e condicionais dentro dos loops quentes.
+	- Impacto esperado: maior throughput nas etapas de produto `A·p`, cálculo de somas/dots e atualizações do vetor solução, diminuindo o tempo médio por iteração.
+
+- Op2 — Cálculo do resíduo R = b − A x:
+	- Implementamos uma rotina especializada que realiza `residuo = b - A*x` em um único passo, sem criar vetor temporário. Em `gradconj.c`, a função `prodMatVetOtim(...)` inicializa `residuo` com `b` e subtrai diretamente `A*x` iterando só pelas diagonais. Essa rotina passa a ser usada na inicialização do resíduo nas duas variantes do método (com e sem pré-condicionador).
+	- Em `sislin.c`, a função `calcResiduoSL(...)` foi reescrita para acumular `||r||₂` diretamente, removendo a alocação temporária de `Ax` e computando `Ax_i` por linha em tempo O(n·k).
+	- Impacto esperado: menos tráfego de memória, melhor localidade de cache, eliminação de alocação temporária e loops extras — melhora o tempo do cálculo de resíduo e a etapa inicial do método.
+
+### Justificativas das alterações
+
+- `restrict` e reestruturação de laços tornam o código mais amigável à vetorização automática do compilador (já sinalizado nos logs de compilação como "loop vectorized"). Para operações intensivas e lineares em memória (dots e A·p), isso traz ganhos diretos.
+- A fusão do cálculo de `b - A*x` evita uma passagem adicional sobre memória e elimina um vetor temporário, reduzindo latências e contensão de cache, sem alterar a matemática do método.
+
 ## Como compilar e executar (v2)
 
 Compilação:

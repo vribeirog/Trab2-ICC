@@ -12,7 +12,8 @@
 #include "gradconj.h"
 
 // Calcula produtor escalar (dot product) entre vetores
-real_t dot(real_t *a, real_t *b, int n) {
+// Uso de restrict para ajudar o compilador a vetorizar e evitar aliasing
+real_t dot(real_t * restrict a, real_t * restrict b, int n) {
     real_t s = 0.0;
     for (int i = 0; i < n; i++) {
         s += a[i] * b[i];
@@ -21,7 +22,7 @@ real_t dot(real_t *a, real_t *b, int n) {
 }
 
 // Calcula norma de um vetor a
-real_t norma(real_t *a, int n) {
+real_t norma(real_t * restrict a, int n) {
     return sqrt(dot(a, a, n));
 }
 
@@ -41,22 +42,37 @@ real_t norma_maxima(real_t *X, real_t *X_old, int n) {
 
 // Calcula produto entre uma matriz k-diagonal (DiagMat) e um vetor de dimensoes n
 // Resultado: y = A * x, onde A é uma matriz k-diagonal
-void prodMatVet(DiagMat *A, real_t *x, real_t *y, int n) {
+void prodMatVet(DiagMat *A, real_t * restrict x, real_t * restrict y, int n) {
     // Inicializar y
     for (int i = 0; i < n; i++) y[i] = 0.0;
 
     // Para cada diagonal de A, aplicar contribuições
-    // A->diags[d][i] representa o elemento A[i][i+offset]
     for (int d = 0; d < A->k; d++) {
-        int off = A->offsets[d];
-        
+        const int off = A->offsets[d];
+        real_t * restrict diag = A->diags[d];
+
         // Iterar sobre as linhas i da diagonal
         for (int i = 0; i < n; i++) {
-            int j = i + off;  // coluna correspondente
-            
-            // Verificar se j está dentro dos limites válidos
-            if (j >= 0 && j < n) {
-                y[i] += A->diags[d][i] * x[j];
+            const int j = i + off;  // coluna correspondente
+            if ((unsigned)j < (unsigned)n) {
+                y[i] += diag[i] * x[j];
+            }
+        }
+    }
+}
+
+// Versão especializada para v2: calcula residuo = b - A*x de forma otimizada
+void calcResidOtim(DiagMat *A, real_t * restrict x, real_t * restrict b, real_t * restrict residuo, int n) {
+    // Inicializa com b
+    for (int i = 0; i < n; i++) residuo[i] = b[i];
+
+    for (int d = 0; d < A->k; d++) {
+        const int off = A->offsets[d];
+        real_t * restrict diag = A->diags[d];
+        for (int i = 0; i < n; i++) {
+            const int j = i + off;
+            if ((unsigned)j < (unsigned)n) {
+                residuo[i] -= diag[i] * x[j];
             }
         }
     }
@@ -97,10 +113,9 @@ real_t gradientesConjugados(DiagMat *A, real_t *b, real_t *x, int n, int maxit, 
 
     int iter = 0;
 
-    // calculo do residuo = b - A*x
-    prodMatVet(A, x, residuo, n);
+    // calculo do residuo = b - A*x (otimizado, op2)
+    calcResidOtim(A, x, b, residuo, n);
     for (int i = 0; i < n; i++) {
-        residuo[i] = b[i] - residuo[i];
         search_direction[i] = residuo[i];
     }
 
@@ -196,11 +211,10 @@ real_t gradientesConjugadosPrecond(DiagMat *M, DiagMat *A, real_t *b, real_t *x,
     int iter = 0;
 
     // calculo do residuo = b - A*x
-    prodMatVet(A, x, residuo, n);
+    calcResidOtim(A, x, b, residuo, n);
     for (int i = 0; i < n; i++) {
-        residuo[i] = b[i] - residuo[i];
-    // aplica o pré-condicionador de Jacobi: z = M^{-1} * residuo (M diagonal stored at diags[0])
-    z[i] = M->diags[0][i] * residuo[i];
+        // aplica o pré-condicionador de Jacobi: z = M^{-1} * residuo (onde M é a diagonal de A)
+        z[i] = M->diags[0][i] * residuo[i];
         search_direction[i] = z[i];
     }
 
