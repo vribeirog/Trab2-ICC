@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
+--------------------------------------------------------------------------------
+Region v1-metodo, Group 1: L3
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 2.257459 |
+|     call count    |        1 |
++-------------------+----------+
++-----------------------+---------+------------+
+|         Event         | Counter |   Core 3   |
++-----------------------+---------+------------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 6325210000 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 8538834000 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 7677615000 |
+|    L2_LINES_IN_ALL    |   PMC0  |  363271400 |
+|     L2_TRANS_L2_WB    |   PMC1  |  263493300 |
++-----------------------+---------+------------+
++-------------------------------+------------+
+|             Metric            |   Core 3   |
++-------------------------------+------------+
+|      Runtime (RDTSC) [s]      |     2.2575 |
+|      Runtime unhalted [s]     |     2.5055 |
+|          Clock [MHz]          |  3790.2898 |
+|              CPI              |     1.3500 |
+|  L3 load bandwidth [MBytes/s] | 10298.9111 |
+|  L3 load data volume [GBytes] |    23.2494 |
+| L3 evict bandwidth [MBytes/s] |  7470.1561 |
+| L3 evict data volume [GBytes] |    16.8636 |
+|    L3 bandwidth [MBytes/s]    | 17769.0673 |
+|    L3 data volume [GBytes]    |    40.1129 |
++-------------------------------+------------+
+--------------------------------------------------------------------------------
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
+--------------------------------------------------------------------------------
+Region v1-residuo, Group 1: L3
++-------------------+----------+
+|    Region Info    |  Core 3  |
++-------------------+----------+
+| RDTSC Runtime [s] | 0.086537 |
+|     call count    |        1 |
++-------------------+----------+
++-----------------------+---------+-----------+
+|         Event         | Counter |   Core 3  |
++-----------------------+---------+-----------+
+|   INSTR_RETIRED_ANY   |  FIXC0  | 243141500 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 327412000 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 294331800 |
+|    L2_LINES_IN_ALL    |   PMC0  |  12075960 |
+|     L2_TRANS_L2_WB    |   PMC1  |  10117920 |
++-----------------------+---------+-----------+
++-------------------------------+------------+
+|             Metric            |   Core 3   |
++-------------------------------+------------+
+|      Runtime (RDTSC) [s]      |     0.0865 |
+|      Runtime unhalted [s]     |     0.0961 |
+|          Clock [MHz]          |  3791.0331 |
+|              CPI              |     1.3466 |
+|  L3 load bandwidth [MBytes/s] |  8930.9673 |
+|  L3 load data volume [GBytes] |     0.7729 |
+| L3 evict bandwidth [MBytes/s] |  7482.8678 |
+| L3 evict data volume [GBytes] |     0.6475 |
+|    L3 bandwidth [MBytes/s]    | 16413.8352 |
+|    L3 data volume [GBytes]    |     1.4204 |
++-------------------------------+------------+

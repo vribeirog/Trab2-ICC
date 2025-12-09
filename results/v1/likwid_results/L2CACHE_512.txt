@@ -1,64 +1,64 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v1-metodo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.005911 |
+| RDTSC Runtime [s] | 0.006813 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+----------+
 |         Event         | Counter |  Core 3  |
 +-----------------------+---------+----------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 20876120 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  | 20572330 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  | 19982680 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |  2696156 |
-|     L2_RQSTS_MISS     |   PMC1  |   890946 |
+|   INSTR_RETIRED_ANY   |  FIXC0  | 20877380 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 25284960 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 22738320 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |  3034835 |
+|     L2_RQSTS_MISS     |   PMC1  |  1169793 |
 +-----------------------+---------+----------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0059 |
-| Runtime unhalted [s] |    0.0061 |
-|      Clock [MHz]     | 3492.1986 |
-|          CPI         |    0.9854 |
-|    L2 request rate   |    0.1292 |
-|     L2 miss rate     |    0.0427 |
-|     L2 miss ratio    |    0.3305 |
+|  Runtime (RDTSC) [s] |    0.0068 |
+| Runtime unhalted [s] |    0.0074 |
+|      Clock [MHz]     | 3789.6915 |
+|          CPI         |    1.2111 |
+|    L2 request rate   |    0.1454 |
+|     L2 miss rate     |    0.0560 |
+|     L2 miss ratio    |    0.3855 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v1-residuo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000278 |
+| RDTSC Runtime [s] | 0.000265 |
 |     call count    |        1 |
 +-------------------+----------+
-+-----------------------+---------+--------+
-|         Event         | Counter | Core 3 |
-+-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 798342 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  | 980454 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  | 952408 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  | 135877 |
-|     L2_RQSTS_MISS     |   PMC1  |  39638 |
-+-----------------------+---------+--------+
++-----------------------+---------+---------+
+|         Event         | Counter |  Core 3 |
++-----------------------+---------+---------+
+|   INSTR_RETIRED_ANY   |  FIXC0  |  798632 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 1015710 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  912776 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |  155892 |
+|     L2_RQSTS_MISS     |   PMC1  |   47696 |
++-----------------------+---------+---------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
 |  Runtime (RDTSC) [s] |    0.0003 |
 | Runtime unhalted [s] |    0.0003 |
-|      Clock [MHz]     | 3491.9931 |
-|          CPI         |    1.2281 |
-|    L2 request rate   |    0.1702 |
-|     L2 miss rate     |    0.0497 |
-|     L2 miss ratio    |    0.2917 |
+|      Clock [MHz]     | 3792.3244 |
+|          CPI         |    1.2718 |
+|    L2 request rate   |    0.1952 |
+|     L2 miss rate     |    0.0597 |
+|     L2 miss ratio    |    0.3060 |
 +----------------------+-----------+
