@@ -6,11 +6,17 @@ CPU=3
 
 mkdir -p "$OUTDIR"
 
-NSIZES="32 64 128 256 512 1000" # 2000 4000 8000 9000 10000 20000"
+NSIZES="32 64 128 256 512 1000 2000 4000 8000 9000 10000"
+#NSIZES="9000 10000 20000"
+#NSIZES="20000"
 
 V1="v1"
 V2="v2"
 
+cd "${V1}"
+make purge
+make
+cd ..
 for n in $NSIZES
 do
     for m in ${METRICAS}
@@ -44,7 +50,7 @@ do
         METRIC_TO_GREP="L3 bandwidth"
     elif [ "$m" = "L2CACHE" ]; then
         METRIC_TO_GREP="L2 miss ratio"
-    elif [ "$m" = "FLOPS_DP" ]; then
+    elif [[ "$m" = "FLOPS_DP" || "$m" = "FLOPS_AVX" ]]; then
         METRIC_TO_GREP="DP MFLOP/s"
     fi
 
@@ -71,10 +77,10 @@ echo -e "\nProcessando $m. \nMétrica: $METRIC_TO_GREP. \nSaída: $LIKWID_CSV\n"
             METRIC_GRADIENTE=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT" | grep -v "AVX" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
             METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | grep -v "AVX" | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
 
-            METRIC_GRADIENTE_AVX=$(grep "AVX DP MFLOP/s" "$LIKWID_OUT" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
-            METRIC_RESIDUO_AVX=$(grep "AVX DP MFLOP/s" "$LIKWID_OUT"   | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
+            METRIC_GRADIENTE_AVX=$(grep "DP MFLOP/s" "$LIKWID_OUT" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
+	    METRIC_RESIDUO_AVX=$(grep "DP MFLOP/s" "$LIKWID_OUT" | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
 
-            echo "${n},${METRIC_GRADIENTE_AVX},${METRIC_RESIDUO_AVX}" >> ${LIKWID_AVX_CSV}
+            #echo " ${n},${METRIC_GRADIENTE_AVX},${METRIC_RESIDUO_AVX}" >> ${LIKWID_AVX_CSV}
         else
             METRIC_GRADIENTE=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
 	    METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
@@ -84,7 +90,7 @@ echo -e "\nProcessando $m. \nMétrica: $METRIC_TO_GREP. \nSaída: $LIKWID_CSV\n"
         if [ -z "$METRIC_GRADIENTE" ]; then METRIC_GRADIENTE="0"; fi
         if [ -z "$METRIC_RESIDUO"   ]; then METRIC_RESIDUO="0"; fi
         if [ -z "$METRIC_GRADIENTE_AVX" ]; then METRIC_GRADIENTE_AVX="0"; fi
-        if [ -z "$METRIC_RESIDUO_AVX"   ]; then METRIC_RESIDUO_AVX="0"; fi
+       if [ -z "$METRIC_RESIDUO_AVX"   ]; then METRIC_RESIDUO_AVX="0"; fi
 
         echo "${n},${METRIC_GRADIENTE},${METRIC_RESIDUO}" >> ${LIKWID_CSV}
     done
@@ -112,6 +118,11 @@ mkdir -p "${OUTDIR}/${V1}/likwid_results/"
 mv "${OUTDIR}/${V1}/"*.txt "${OUTDIR}/${V1}/likwid_results/"
 
 # ================================
+
+cd "${V2}"
+make purge
+make
+cd ..
 
 for n in $NSIZES
 do
@@ -146,9 +157,9 @@ do
         METRIC_TO_GREP="L3 bandwidth"
     elif [ "$m" = "L2CACHE" ]; then
         METRIC_TO_GREP="L2 miss ratio"
-    elif [ "$m" = "FLOPS_DP" ]; then
+     elif [[ "$m" = "FLOPS_DP" || "$m" = "FLOPS_AVX" ]]; then
         METRIC_TO_GREP="DP MFLOP/s"
-    fi
+     fi
 
 echo -e "\nProcessando $m. \nMétrica: $METRIC_TO_GREP. \nSaída: $LIKWID_CSV\n" >/dev/tty
 
@@ -170,16 +181,17 @@ echo -e "\nProcessando $m. \nMétrica: $METRIC_TO_GREP. \nSaída: $LIKWID_CSV\n"
 
 
         if [ "$m" = "FLOPS_DP" ]; then
-            METRIC_GRADIENTE=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT" | grep -v "AVX" | sed -n '1p' |  grep -oE '[0-9]+\.[0-9]+')
-            METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | grep -v "AVX" | sed -n '2p' |  grep -oE '[0-9]+\.[0-9]+')
+            
+	    METRIC_GRADIENTE=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT" | grep -v "AVX" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
+            METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | grep -v "AVX" | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
 
-            METRIC_GRADIENTE_AVX=$(grep "AVX DP MFLOP/s" "$LIKWID_OUT" | sed -n '1p' |  grep -oE '[0-9]+\.[0-9]+')
-            METRIC_RESIDUO_AVX=$(grep "AVX DP MFLOP/s" "$LIKWID_OUT"   | sed -n '2p' |  grep -oE '[0-9]+\.[0-9]+')
+            METRIC_GRADIENTE_AVX=$(grep "DP MFLOP/s" "$LIKWID_OUT" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
+            METRIC_RESIDUO_AVX=$(grep "DP MFLOP/s" "$LIKWID_OUT" | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
 
-            echo "${n},${METRIC_GRADIENTE_AVX},${METRIC_RESIDUO_AVX}" >> ${LIKWID_AVX_CSV}
+            #echo "${n},${METRIC_GRADIENTE_AVX},${METRIC_RESIDUO_AVX}" >> ${LIKWID_AVX_CSV}
         else
 	    METRIC_GRADIENTE=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT" | sed -n '1p' | grep -oE '[0-9]+\.[0-9]+')
-            METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
+           METRIC_RESIDUO=$(grep "$METRIC_TO_GREP" "$LIKWID_OUT"   | sed -n '2p' | grep -oE '[0-9]+\.[0-9]+')
           
         fi
 
