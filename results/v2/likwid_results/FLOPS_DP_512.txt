@@ -7,31 +7,31 @@ Region v2-metodo, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000220 |
+| RDTSC Runtime [s] | 0.000209 |
 |     call count    |        1 |
 +-------------------+----------+
 +------------------------------------------+---------+---------+
 |                   Event                  | Counter |  Core 3 |
 +------------------------------------------+---------+---------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 2675700 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  811020 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  749050 |
+|             INSTR_RETIRED_ANY            |  FIXC0  | 1831103 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  706488 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  710000 |
 | FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |       0 |
 |    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |  395708 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |   29184 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |   29056 |
 +------------------------------------------+---------+---------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
 |  Runtime (RDTSC) [s] |    0.0002 |
 | Runtime unhalted [s] |    0.0002 |
-|      Clock [MHz]     | 3689.9649 |
-|          CPI         |    0.3031 |
-|      DP MFLOP/s      | 2325.5183 |
-|    AVX DP MFLOP/s    |  529.7588 |
-|    Packed MUOPS/s    |  132.4397 |
-|    Scalar MUOPS/s    | 1795.7595 |
-|  Vectorization ratio |    6.8686 |
+|      Clock [MHz]     | 3391.1187 |
+|          CPI         |    0.3858 |
+|      DP MFLOP/s      | 2449.0780 |
+|    AVX DP MFLOP/s    |  556.0146 |
+|    Packed MUOPS/s    |  139.0036 |
+|    Scalar MUOPS/s    | 1893.0635 |
+|  Vectorization ratio |    6.8405 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
 CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
@@ -42,29 +42,29 @@ Region v2-residuo, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000007 |
+| RDTSC Runtime [s] | 0.000004 |
 |     call count    |        1 |
 +-------------------+----------+
 +------------------------------------------+---------+--------+
 |                   Event                  | Counter | Core 3 |
 +------------------------------------------+---------+--------+
-|             INSTR_RETIRED_ANY            |  FIXC0  |  65291 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  34292 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  31666 |
+|             INSTR_RETIRED_ANY            |  FIXC0  |  54614 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  24625 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  24708 |
 | FP_ARITH_INST_RETIRED_128B_PACKED_DOUBLE |   PMC0  |      0 |
-|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |   7674 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |    256 |
+|    FP_ARITH_INST_RETIRED_SCALAR_DOUBLE   |   PMC1  |   8698 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC2  |      0 |
 +------------------------------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 6.548106e-06 |
-| Runtime unhalted [s] | 1.006216e-05 |
-|      Clock [MHz]     |    3690.6350 |
-|          CPI         |       0.5252 |
-|      DP MFLOP/s      |    1328.3230 |
-|    AVX DP MFLOP/s    |     156.3811 |
-|    Packed MUOPS/s    |      39.0953 |
-|    Scalar MUOPS/s    |    1171.9419 |
-|  Vectorization ratio |       3.2282 |
+|  Runtime (RDTSC) [s] | 4.369144e-06 |
+| Runtime unhalted [s] | 7.225696e-06 |
+|      Clock [MHz]     |    3396.5280 |
+|          CPI         |       0.4509 |
+|      DP MFLOP/s      |    1990.7790 |
+|    AVX DP MFLOP/s    |            0 |
+|    Packed MUOPS/s    |            0 |
+|    Scalar MUOPS/s    |    1990.7790 |
+|  Vectorization ratio |            0 |
 +----------------------+--------------+

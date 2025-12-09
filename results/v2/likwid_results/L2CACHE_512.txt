@@ -1,64 +1,64 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v2-metodo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000209 |
+| RDTSC Runtime [s] | 0.000186 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+---------+
 |         Event         | Counter |  Core 3 |
 +-----------------------+---------+---------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 1831027 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  706182 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  683502 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   67949 |
-|     L2_RQSTS_MISS     |   PMC1  |    2164 |
+|   INSTR_RETIRED_ANY   |  FIXC0  | 1831034 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  702671 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  631332 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   73294 |
+|     L2_RQSTS_MISS     |   PMC1  |    3430 |
 +-----------------------+---------+---------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
 |  Runtime (RDTSC) [s] |    0.0002 |
 | Runtime unhalted [s] |    0.0002 |
-|      Clock [MHz]     | 3504.6767 |
-|          CPI         |    0.3857 |
-|    L2 request rate   |    0.0371 |
-|     L2 miss rate     |    0.0012 |
-|     L2 miss ratio    |    0.0318 |
+|      Clock [MHz]     | 3793.0632 |
+|          CPI         |    0.3838 |
+|    L2 request rate   |    0.0400 |
+|     L2 miss rate     |    0.0019 |
+|     L2 miss ratio    |    0.0468 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v2-residuo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000005 |
+| RDTSC Runtime [s] | 0.000004 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+--------+
 |         Event         | Counter | Core 3 |
 +-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  |  54536 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  23864 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  23188 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   3103 |
-|     L2_RQSTS_MISS     |   PMC1  |    845 |
+|   INSTR_RETIRED_ANY   |  FIXC0  |  54543 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  23888 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  21300 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   4265 |
+|     L2_RQSTS_MISS     |   PMC1  |   1337 |
 +-----------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 4.615987e-06 |
-| Runtime unhalted [s] | 7.035130e-06 |
-|      Clock [MHz]     |    3491.0097 |
-|          CPI         |       0.4376 |
-|    L2 request rate   |       0.0569 |
-|     L2 miss rate     |       0.0155 |
-|     L2 miss ratio    |       0.2723 |
+|  Runtime (RDTSC) [s] | 3.796937e-06 |
+| Runtime unhalted [s] | 7.009450e-06 |
+|      Clock [MHz]     |    3822.0471 |
+|          CPI         |       0.4380 |
+|    L2 request rate   |       0.0782 |
+|     L2 miss rate     |       0.0245 |
+|     L2 miss ratio    |       0.3135 |
 +----------------------+--------------+

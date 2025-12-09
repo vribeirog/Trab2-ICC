@@ -1,64 +1,64 @@
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v2-metodo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000058 |
+| RDTSC Runtime [s] | 0.000047 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+--------+
 |         Event         | Counter | Core 3 |
 +-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  | 467318 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  | 181219 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  | 181152 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   3888 |
-|     L2_RQSTS_MISS     |   PMC1  |   1027 |
+|   INSTR_RETIRED_ANY   |  FIXC0  | 468566 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  | 176933 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  | 163442 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   5553 |
+|     L2_RQSTS_MISS     |   PMC1  |   1636 |
 +-----------------------+---------+--------+
-+----------------------+-----------+
-|        Metric        |   Core 3  |
-+----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0001 |
-| Runtime unhalted [s] |    0.0001 |
-|      Clock [MHz]     | 3393.3716 |
-|          CPI         |    0.3878 |
-|    L2 request rate   |    0.0083 |
-|     L2 miss rate     |    0.0022 |
-|     L2 miss ratio    |    0.2641 |
-+----------------------+-----------+
++----------------------+--------------+
+|        Metric        |    Core 3    |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 4.664320e-05 |
+| Runtime unhalted [s] |       0.0001 |
+|      Clock [MHz]     |    3689.3154 |
+|          CPI         |       0.3776 |
+|    L2 request rate   |       0.0119 |
+|     L2 miss rate     |       0.0035 |
+|     L2 miss ratio    |       0.2946 |
++----------------------+--------------+
 --------------------------------------------------------------------------------
-CPU name:	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
-CPU type:	Intel Core Haswell processor
-CPU clock:	3.39 GHz
+CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
+CPU type:	Intel Coffeelake processor
+CPU clock:	3.41 GHz
 --------------------------------------------------------------------------------
 Region v2-residuo, Group 1: L2CACHE
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000002 |
+| RDTSC Runtime [s] | 0.000001 |
 |     call count    |        1 |
 +-------------------+----------+
 +-----------------------+---------+--------+
 |         Event         | Counter | Core 3 |
 +-----------------------+---------+--------+
-|   INSTR_RETIRED_ANY   |  FIXC0  |  16518 |
-| CPU_CLK_UNHALTED_CORE |  FIXC1  |  12246 |
-|  CPU_CLK_UNHALTED_REF |  FIXC2  |  12376 |
-| L2_TRANS_ALL_REQUESTS |   PMC0  |   1627 |
-|     L2_RQSTS_MISS     |   PMC1  |    361 |
+|   INSTR_RETIRED_ANY   |  FIXC0  |  16527 |
+| CPU_CLK_UNHALTED_CORE |  FIXC1  |  13656 |
+|  CPU_CLK_UNHALTED_REF |  FIXC2  |  12638 |
+| L2_TRANS_ALL_REQUESTS |   PMC0  |   2333 |
+|     L2_RQSTS_MISS     |   PMC1  |    689 |
 +-----------------------+---------+--------+
 +----------------------+--------------+
 |        Metric        |    Core 3    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 1.547444e-06 |
-| Runtime unhalted [s] | 3.610135e-06 |
-|      Clock [MHz]     |    3356.4855 |
-|          CPI         |       0.7414 |
-|    L2 request rate   |       0.0985 |
-|     L2 miss rate     |       0.0219 |
-|     L2 miss ratio    |       0.2219 |
+|  Runtime (RDTSC) [s] | 1.334759e-06 |
+| Runtime unhalted [s] | 4.007033e-06 |
+|      Clock [MHz]     |    3682.5256 |
+|          CPI         |       0.8263 |
+|    L2 request rate   |       0.1412 |
+|     L2 miss rate     |       0.0417 |
+|     L2 miss ratio    |       0.2953 |
 +----------------------+--------------+

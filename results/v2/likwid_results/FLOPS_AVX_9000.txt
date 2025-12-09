@@ -7,27 +7,27 @@ Region v2-metodo, Group 1: FLOPS_AVX
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000359 |
+| RDTSC Runtime [s] | 0.003070 |
 |     call count    |        1 |
 +-------------------+----------+
-+------------------------------------------+---------+---------+
-|                   Event                  | Counter |  Core 3 |
-+------------------------------------------+---------+---------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 3565733 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 1308998 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 1208278 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_SINGLE |   PMC0  |       0 |
-| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC1  |   56750 |
-+------------------------------------------+---------+---------+
++------------------------------------------+---------+----------+
+|                   Event                  | Counter |  Core 3  |
++------------------------------------------+---------+----------+
+|             INSTR_RETIRED_ANY            |  FIXC0  | 31827130 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 11108970 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  9989842 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_SINGLE |   PMC0  |        0 |
+| FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC1  |   510750 |
++------------------------------------------+---------+----------+
 +----------------------+-----------+
 |        Metric        |   Core 3  |
 +----------------------+-----------+
-|  Runtime (RDTSC) [s] |    0.0004 |
-| Runtime unhalted [s] |    0.0004 |
-|      Clock [MHz]     | 3692.0180 |
-|          CPI         |    0.3671 |
+|  Runtime (RDTSC) [s] |    0.0031 |
+| Runtime unhalted [s] |    0.0033 |
+|      Clock [MHz]     | 3789.7258 |
+|          CPI         |    0.3490 |
 |   Packed SP MFLOP/s  |         0 |
-|   Packed DP MFLOP/s  |  631.6306 |
+|   Packed DP MFLOP/s  |  665.4628 |
 +----------------------+-----------+
 --------------------------------------------------------------------------------
 CPU name:	Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz
@@ -38,25 +38,25 @@ Region v2-residuo, Group 1: FLOPS_AVX
 +-------------------+----------+
 |    Region Info    |  Core 3  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000007 |
+| RDTSC Runtime [s] | 0.000061 |
 |     call count    |        1 |
 +-------------------+----------+
 +------------------------------------------+---------+--------+
 |                   Event                  | Counter | Core 3 |
 +------------------------------------------+---------+--------+
-|             INSTR_RETIRED_ANY            |  FIXC0  | 102857 |
-|           CPU_CLK_UNHALTED_CORE          |  FIXC1  |  37598 |
-|           CPU_CLK_UNHALTED_REF           |  FIXC2  |  34648 |
+|             INSTR_RETIRED_ANY            |  FIXC0  | 894857 |
+|           CPU_CLK_UNHALTED_CORE          |  FIXC1  | 242480 |
+|           CPU_CLK_UNHALTED_REF           |  FIXC2  | 218396 |
 | FP_ARITH_INST_RETIRED_256B_PACKED_SINGLE |   PMC0  |      0 |
 | FP_ARITH_INST_RETIRED_256B_PACKED_DOUBLE |   PMC1  |      0 |
 +------------------------------------------+---------+--------+
-+----------------------+--------------+
-|        Metric        |    Core 3    |
-+----------------------+--------------+
-|  Runtime (RDTSC) [s] | 7.327441e-06 |
-| Runtime unhalted [s] | 1.103248e-05 |
-|      Clock [MHz]     |    3698.0967 |
-|          CPI         |       0.3655 |
-|   Packed SP MFLOP/s  |            0 |
-|   Packed DP MFLOP/s  |            0 |
-+----------------------+--------------+
++----------------------+-----------+
+|        Metric        |   Core 3  |
++----------------------+-----------+
+|  Runtime (RDTSC) [s] |    0.0001 |
+| Runtime unhalted [s] |    0.0001 |
+|      Clock [MHz]     | 3783.7624 |
+|          CPI         |    0.2710 |
+|   Packed SP MFLOP/s  |         0 |
+|   Packed DP MFLOP/s  |         0 |
++----------------------+-----------+
