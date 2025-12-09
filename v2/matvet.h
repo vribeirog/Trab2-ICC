@@ -15,7 +15,6 @@
 void imprime_matriz(real_t **mat, int n);
 void imprime_vetor(real_t *vet, int n);
 
-// Funções de alocação e desalocação
 // Representação de matrizes k-diagonais: armazenamos apenas as diagonais não-nulas
 typedef struct {
 	int n;        // dimensão da matriz (n x n)
@@ -24,6 +23,7 @@ typedef struct {
 	real_t **diags; // cada diags[d] é um vetor de tamanho n com os elementos da diagonal
 } DiagMat;
 
+// Funções de alocação e desalocação
 int aloca_vetores(real_t **b, real_t **bsp, real_t **x, int n);
 int aloca_matrizes(DiagMat **A, DiagMat **ASP, DiagMat **D, DiagMat **L, DiagMat **U, DiagMat **M, int n, int k);
 void free_all(DiagMat **A, real_t **b, real_t **x, DiagMat **ASP, real_t **bsp, DiagMat **D, DiagMat **L, DiagMat **U, DiagMat **M);
